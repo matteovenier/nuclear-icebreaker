@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nuclear_icebreaker"
+version = "0.1.0"
+description = "Steady-state model of a nuclear icebreaker internal and external behavior."
+readme = "README.md"
+requires-python = ">=3.12"
+authors = [
+    {name = "Matteo Venier", email = "matteo1.venier@mail.polimi.it"}
+]
+license = {text = "MIT"}
+
+dependencies = [
+    "numpy>=1.26.0",           # Numerical computing
+    "scipy>=1.11.0",           # Scientific computing (optimization, interpolation)
+    "matplotlib>=3.8.0",       # Static plotting (real-time compatible)
+    "seaborn>=0.13.0",         # Statistical visualization
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",           # Unit testing
+    "black>=23.11.0",          # Code formatting
+    "ruff>=0.1.0",             # Linting
+    "mypy>=1.7.0",             # Type checking
+    "jupyter>=1.0.0",          # Interactive notebooks (optional)
+]
+
+export = [
+    "python-pptx>=0.6.21",     # PowerPoint generation
+    "pandas>=2.1.0",           # Data export (CSV, Excel)
+    "pillow>=10.1.0",          # Image processing for plots
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+include = '\.pyi?$'
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
