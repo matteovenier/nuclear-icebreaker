@@ -17,7 +17,7 @@ dependencies = [
     "numpy>=1.26.0",           # Numerical computing
     "scipy>=1.11.0",           # Scientific computing (optimization, interpolation)
     "matplotlib>=3.8.0",       # Static plotting (real-time compatible)
-    "seaborn>=0.13.0",         # Statistical visualization
+    "plotly>=5.16.0",         # Interactive plotting
 ]
 
 [project.optional-dependencies]

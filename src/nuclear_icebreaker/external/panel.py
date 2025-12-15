@@ -2,8 +2,11 @@
 Docstring for ship.external.panel
 This module defines the Panel class used in the ship simulation.
 """
+
 import src.nuclear_icebreaker.config as config
 import numpy as np
+
+
 class Panel:
     height: float  # in meters
     length: float  # in meters
@@ -13,9 +16,9 @@ class Panel:
     parallel_to_flow: bool
     underwater: bool
     reynolds_number: float
-    Ct : float  # Friction coefficient
+    Ct: float  # Friction coefficient
 
-    def __init__(self, height, length, roughness,parallel_to_flow, underwater, k):
+    def __init__(self, height, length, roughness, parallel_to_flow, underwater, k):
         self.height = height
         self.length = length
         self.area = height * length
@@ -26,6 +29,7 @@ class Panel:
         self.reynolds = 0.0
 
         # PLACEHOLDER CODE, does not account if perpendicular or parallel to flow
+
     def reynolds_number(self, velocity: float) -> float:
         """Calculate the Reynolds number for the panel."""
         characteristic_length = self.length
@@ -40,14 +44,13 @@ class Panel:
         if self.parallel_to_flow and self.underwater:
             if Re < 1e6:
                 # Not fully turbulent yet
-                Cf = 0.075 / np.power(Re, 1/5)
+                Cf = 0.075 / np.power(Re, 1 / 5)
             else:
                 # Turbulent flow
-                Cf = np.power(1.89 - 1.62 * np.log10(self.roughness/self.length), -2.5)
+                Cf = np.power(1.89 - 1.62 * np.log10(self.roughness / self.length), -2.5)
             self.Ct = Cf * (1 + self.k)
         else:
             # Simplified for other cases
             self.Ct = 2
 
         return self.Ct
-
