@@ -77,7 +77,7 @@ mu_out_sg=st.my_pt(p_out_sg/100, T_out_sg) #Pa.s
 Q_sg=m*(h_out_sg - h_in_sg) #kW
 print(f"Calore ceduto dallo steam generator: {Q_sg/1000:.2f} MW")
 
-U_sg=1000 #W/m2K coefficiente globale di scambio termico
+U_sg=1860 #W/m2K coefficiente globale di scambio termico
 T_fiss=300 #°C temperatura delle pareti del tubo dello steam generator
 T_log=((T_fiss - T_in_sg)-(T_fiss - T_out_sg))/ (  math.log( (T_fiss - T_in_sg)/(T_fiss - T_out_sg) )  ) #temperatura logaritmica media
 print(f"Temperatura logaritmica media: {T_log:.2f} °C")
@@ -114,7 +114,7 @@ print(f"entalpia in uscita ahx: {h_out_ahx:.2f} kJ/kg")
 
 Q_ahx=m*(h_in_ahx - h_out_ahx) #kW
 print(f"Calore ceduto dall'hair heat exchanger: {Q_ahx/1000:.2f} MW")    
-U_ahx=500 #W/m2K coefficiente globale di scambio termico
+U_ahx=1736 #W/m2K coefficiente globale di scambio termico
 T_fiss_ahx=35 #°C temperatura delle pareti del tubo dell'hair heat exchanger
 T_log_ahx=((T_in_ahx - T_fiss_ahx)-(T_out_ahx - T_fiss_ahx))/ (  math.log( (T_in_ahx - T_fiss_ahx)/(T_out_ahx - T_fiss_ahx) )  ) #temperatura logaritmica media
 print(f"Temperatura logaritmica media hair heat exchanger: {T_log_ahx:.2f} °C")
@@ -148,7 +148,7 @@ mu_out_wwhx=st.my_pt(p_out_wwhx/100, T_out_wwhx) #Pa.s
 
 Q_wwhx=m*(h_in_wwhx - h_out_wwhx) #kW
 print(f"Calore ceduto dal water water heat exchanger: {Q_wwhx/1000:.2f} MW")    
-U_wwhx=1200 #W/m2K coefficiente globale di scambio termico
+U_wwhx=1122 #W/m2K coefficiente globale di scambio termico
 T_fiss_wwhx=100 #°C temperatura delle pareti del tubo del water water heat exchanger
 T_log_wwhx=((T_in_wwhx - T_fiss_wwhx)-(T_out_wwhx - T_fiss_wwhx))/ (math.log( (T_in_wwhx - T_fiss_wwhx)/(T_out_wwhx - T_fiss_wwhx))) #temperatura logaritmica media
 print(f"Temperatura logaritmica media water water heat exchanger: {T_log_wwhx:.2f} °C")
@@ -238,5 +238,6 @@ print(f"l'altezza h del circuito di circolazione naturale passiva è di: {h_sol[
 
 #l'altezza h trovata è compatibile con il bilancio di pressione del circuito chiuso e anche con il vincolo geometrico
 #che sia minore dell'altezza massima della nave di 40 m
+
 
 print(f"l'altezza totale data da h+Lsg è di: {h_sol[0]+L_sg:.2f} m che è minore di 40 m quindi compatibile con il vincolo geometrico")
